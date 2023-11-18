@@ -2,8 +2,7 @@ package org.example.model;
 
 import org.example.vo.Vacancy;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Provider {
     private Strategy strategy;
@@ -15,7 +14,11 @@ public class Provider {
     public Provider(Strategy strategy) {
         this.strategy = strategy;
     }
-    List<Vacancy> getJavaVacancies(String searchString){
-        return null;
+    public List<Vacancy> getJavaVacancies(String searchString){
+        if(searchString!=null){
+            return strategy.getVacancies(searchString);
+        }else{
+            return Collections.emptyList();
+        }
     }
 }

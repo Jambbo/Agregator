@@ -1,8 +1,9 @@
 package org.example;
 
 import org.example.model.Provider;
+import org.example.vo.Vacancy;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Controller {
     Provider[] providers;
@@ -16,5 +17,12 @@ public class Controller {
         return "Controller{" +
                 "providers=" + Arrays.toString(providers) +
                 '}';
+    }
+    public void scan(){
+        List<Vacancy> vacancies = new ArrayList<>();
+        for(Provider provider: providers){
+            vacancies.addAll(provider.getJavaVacancies("MyTown"));
+        }
+        System.out.println(vacancies.size());
     }
 }
