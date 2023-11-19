@@ -1,28 +1,18 @@
 package org.example;
 
+import org.example.model.Model;
 import org.example.model.Provider;
 import org.example.vo.Vacancy;
 
+import java.io.IOException;
 import java.util.*;
 
 public class Controller {
-    Provider[] providers;
-    public Controller(Provider...providers) {
-        if(providers.length==0) throw new IllegalArgumentException();
-        this.providers=providers;
+   private Model model;
+    public Controller(Model model){
+        this.model=model;
     }
-
-    @Override
-    public String toString() {
-        return "Controller{" +
-                "providers=" + Arrays.toString(providers) +
-                '}';
-    }
-    public void scan(){
-        List<Vacancy> vacancies = new ArrayList<>();
-        for(Provider provider: providers){
-            vacancies.addAll(provider.getJavaVacancies("MyTown"));
-        }
-        System.out.println(vacancies.size());
+    public void onCitySelect(String cityName)  {
+        model.selectCity(cityName);
     }
 }

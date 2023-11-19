@@ -2,6 +2,7 @@ package org.example.model;
 
 import org.example.vo.Vacancy;
 
+import java.io.IOException;
 import java.util.*;
 
 public class Provider {
@@ -14,7 +15,7 @@ public class Provider {
     public Provider(Strategy strategy) {
         this.strategy = strategy;
     }
-    public List<Vacancy> getJavaVacancies(String searchString){
+    public List<Vacancy> getJavaVacancies(String searchString)  {
         if(searchString!=null){
             return strategy.getVacancies(searchString);
         }else{
